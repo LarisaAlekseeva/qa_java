@@ -1,18 +1,20 @@
 import com.example.Feline;
 import com.example.Lion;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnitRunner;
-
-
+import org.mockito.runners.MockitoJUnitRunner;
 import java.util.List;
-
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
 
 @RunWith(MockitoJUnitRunner.class)
 public class LionTest {
+
+    @Mock
+    Feline feline;
+
     @Test
     public void checkHasManeException() throws Exception {
         assertThrows(Exception.class, () -> {
@@ -21,21 +23,16 @@ public class LionTest {
     }
     @Test
     public void lionGetKittensTest() throws Exception {
-        Feline feline = new Feline();
         Lion lion = new Lion("Самец", feline);
-        Lion lionSpy = Mockito.spy(lion);
-        lionSpy.getKittens();
         Mockito.when(feline.getKittens()).thenReturn(1);
-        assertEquals(1, lionSpy.getKittens());
+        Assert.assertEquals(1, lion.getKittens());
     }
     @Test
     public void checkGetFood() throws Exception {
-        Feline feline = new Feline();
         Lion lion = new Lion("Самка", feline);
-        Lion lionSpy = Mockito.spy(lion);
-        lionSpy.getFood();
         Mockito.when(feline.getFood("Хищник")).thenReturn(List.of("Животные", "Птицы", "Рыба"));
-        assertEquals(List.of("Животные", "Птицы", "Рыба"), lionSpy.getFood());
+        List<String> expected = List.of("Животные", "Птицы", "Рыба");
+        Assert.assertEquals(expected, lion.getFood());
     }
 }
 

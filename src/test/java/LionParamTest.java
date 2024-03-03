@@ -30,7 +30,7 @@ public class LionParamTest {
         };
     }
     @Test
-    public void LionParamTest() throws Exception {
+    public void lionParamTest() throws Exception {
         Feline feline = Mockito.mock((Feline.class));
         Lion lion = new Lion(sex, feline);
         assertEquals(hasMane, lion.doesHaveMane());

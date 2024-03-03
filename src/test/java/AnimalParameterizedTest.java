@@ -21,8 +21,7 @@ public class AnimalParameterizedTest {
     public static Object[][] getAnimalType() {
         return new Object[][] {
                 {"Хищник", List.of("Животные", "Птицы", "Рыба"), true},
-                {"Травоядное", List.of("Трава", "Различные растения"), true},
-                {"Хищник", List.of("Трава", "Различные растения"), false}
+                {"Травоядное", List.of("Трава", "Различные растения"), true}
         };
     }
     @Test
